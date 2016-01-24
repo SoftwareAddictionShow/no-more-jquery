@@ -6,6 +6,11 @@
 // Great website for reasons not to use jquery:
 // http://youmightnotneedjquery.com
 
+var style = document.createElement('style');
+style.type = 'text/css';
+style.innerHTML = '.hidden { display: none; }';
+document.getElementsByTagName('head')[0].appendChild(style);
+
 function $one(selector) {
 	return document.querySelector(selector);
 }
@@ -14,16 +19,13 @@ function $all(selector) {
 	return document.querySelectorAll(selector);
 }
 
-// TODO: Change to use a data-attribute when IE 10 goes out of support
-// https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Using_data_attributes
-HTMLElement.prototype.hide = function(id) {
-	this.setAttribute('display-orig', this.style.display);
-	this.style.display = 'none';
-};
+function hide(selector) {
+	document.querySelectorAll(selector).classList.add('hidden');
+}
 
-HTMLElement.prototype.show = function(id) {
-	this.style.display = this.getAttribute('display-orig');
-};
+function show(selector) {
+	document.querySelector(selector).classList.remove('hidden');
+}
 
 function documentOnReady(cb) {
 	if (document.readyState !== 'loading') {
