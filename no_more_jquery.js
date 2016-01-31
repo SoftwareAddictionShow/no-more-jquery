@@ -20,11 +20,17 @@ function $all(selector) {
 }
 
 function hide(selector) {
-	document.querySelectorAll(selector).classList.add('hidden');
+	var elements = document.querySelectorAll(selector);
+	for (var i=0; i<elements.length; ++i) {
+		elements[0].classList.add('hidden');
+	}
 }
 
 function show(selector) {
-	document.querySelector(selector).classList.remove('hidden');
+	var elements = document.querySelectorAll(selector);
+	for (var i=0; i<elements.length; ++i) {
+		elements[0].classList.remove('hidden');
+	}
 }
 
 function documentOnReady(cb) {
