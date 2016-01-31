@@ -50,7 +50,7 @@ function httpPost(url, cb, timeout) {
 }
 
 function httpRequest(url, method, cb, timeout) {
-	timeout = timeout | 3000;
+	timeout = timeout || 3000;
 	var xhr = new XMLHttpRequest();
 	xhr.onreadystatechange = function() {
 		if (this.readyState === 4) {
