@@ -22,14 +22,14 @@ function $all(selector) {
 function hide(selector) {
 	var elements = document.querySelectorAll(selector);
 	for (var i=0; i<elements.length; ++i) {
-		elements[0].classList.add('hidden');
+		elements[i].classList.add('hidden');
 	}
 }
 
 function show(selector) {
 	var elements = document.querySelectorAll(selector);
 	for (var i=0; i<elements.length; ++i) {
-		elements[0].classList.remove('hidden');
+		elements[i].classList.remove('hidden');
 	}
 }
 
