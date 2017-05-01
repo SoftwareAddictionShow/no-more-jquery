@@ -76,23 +76,23 @@ function animateCSS(element, start_fields, end_fields, duration, iteration_count
 
 	let style = document.createElement('style');
 	style.type = 'text/css';
-	style.innerHTML = "\
-	." + anim_name + " {\
-		animation-duration: " + duration + ";\
-		animation-name: " + anim_name + ";\
-		animation-iteration-count: " + iteration_count + ";\
-		animation-direction: " + direction + ";\
-	}\
-	@keyframes " + anim_name + " {\
-		from {\
-			" + start_fields + "\
-		}\
-	}\
-	@keyframes " + anim_name + " {\
-		to {\
-			" + end_fields + "\
-		}\
-	}";
+	style.innerHTML = `
+	.${anim_name} {
+		animation-duration: ${duration};
+		animation-name: ${anim_name};
+		animation-iteration-count: ${iteration_count};
+		animation-direction: ${direction};
+	}
+	@keyframes ${anim_name} {
+		from {
+			${start_fields}
+		}
+	}
+	@keyframes ${anim_name} {
+		to {
+			${end_fields}
+		}
+	}`;
 	document.getElementsByTagName('head')[0].appendChild(style);
 
 	element.addEventListener('animationstart', function() {
