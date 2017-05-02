@@ -11,12 +11,18 @@ style.type = 'text/css';
 style.innerHTML = '.hidden { display: none; }';
 document.getElementsByTagName('head')[0].appendChild(style);
 
-function $one(selector) {
-	return document.querySelector(selector);
-}
+function $(selector) {
+	if(! selector || selector.length === 0) {
+		return null;
+	} else if (selector[0] === '#') {
+		return document.querySelector(selector);
+	} else if(selector[0] === '.') {
+		return document.querySelectorAll(selector);
+	} else {
+		return document.getElementsByTagName(selector);
+	}
 
-function $all(selector) {
-	return document.querySelectorAll(selector);
+	return null;
 }
 
 function hide(selector) {
@@ -67,6 +73,7 @@ function httpRequest(url, method, cb, timeout) {
 	xhr.send(null);
 }
 
+// FIXME: This stacks a new set of events for each animation call
 // FIXME: Use a unique random number, rather than this global
 let g_anim_counter = 0;
 function animateCSS(element, start_fields, end_fields, duration, iteration_count, direction) {
