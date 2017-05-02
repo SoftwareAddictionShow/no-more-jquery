@@ -39,6 +39,15 @@ function show(selector) {
 	}
 }
 
+function is_hidden(selector) {
+	let element = document.querySelector(selector);
+	if (element) {
+		return element.classList.contains('hidden');
+	}
+
+	return false;
+}
+
 function documentOnReady(cb) {
 	if (document.readyState !== 'loading') {
 		cb();
