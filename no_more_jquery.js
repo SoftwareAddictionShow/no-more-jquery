@@ -8,7 +8,7 @@
 
 let style = document.createElement('style');
 style.type = 'text/css';
-style.innerHTML = '.hidden { display: none; }';
+style.innerHTML = '.hidden { display: none !important; }';
 document.getElementsByTagName('head')[0].appendChild(style);
 
 function $(selector) {
